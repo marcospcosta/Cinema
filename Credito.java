@@ -9,6 +9,6 @@ package cinemalib;
  *
  * @author amandacarvalho
  */
-public class Sala {
+public class Credito {
     
 }
