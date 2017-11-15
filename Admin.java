@@ -9,6 +9,8 @@ package cinemaadmin;
  *
  * @author amandacarvalho
  */
+import cinemalib.*;
+
 public class Admin extends javax.swing.JFrame {
 
     /**
@@ -146,7 +148,7 @@ public class Admin extends javax.swing.JFrame {
 
         jButton1.setText("Cadastrar Filme");
 
-        jLabel10.setText("Capa:");
+        jLabel10.setText("Cartaz:");
 
         jButton2.setText("Escolher arquivo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -587,6 +589,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void cadastroFilmesMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastroFilmesMenuMousePressed
         // TODO add your handling code here:
+        closeAllForms();
         cadastroFilmesFrame.setVisible(true);
         cadastroFilmesFrame.setSize(700, 500);
     }//GEN-LAST:event_cadastroFilmesMenuMousePressed

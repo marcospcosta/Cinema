@@ -50,7 +50,7 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
         desktopPane.add(jButton1);
-        jButton1.setBounds(580, 110, 120, 200);
+        jButton1.setBounds(570, 110, 120, 200);
 
         jButton2.setText("Filme1");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +62,17 @@ public class Cliente extends javax.swing.JFrame {
         jButton2.setBounds(50, 110, 120, 200);
 
         jButton3.setText("Filme2");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         desktopPane.add(jButton3);
-        jButton3.setBounds(230, 110, 120, 200);
+        jButton3.setBounds(220, 110, 120, 200);
 
         jButton4.setText("Filme3");
         desktopPane.add(jButton4);
-        jButton4.setBounds(410, 110, 120, 200);
+        jButton4.setBounds(400, 110, 120, 200);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -127,6 +132,10 @@ public class Cliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -12,4 +12,23 @@ package cinemalib;
  */
 public class Pagamento {
     
+     Ingresso ticket;
+     private double valor;
+   
+    /**
+     * @return the valor
+     */
+    public double getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+  
+   
+    
 }
