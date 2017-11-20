@@ -26,7 +26,6 @@ public class Dinheiro extends Pagamento {
     public void setTroco(double troco) {
         this.troco = troco;
     }
-   
     
     
 }

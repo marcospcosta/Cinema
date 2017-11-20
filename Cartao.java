@@ -41,5 +41,4 @@ public class Cartao extends Pagamento {
         this.tipocartao = tipocartao;
     }
     
-    
 }

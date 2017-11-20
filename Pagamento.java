@@ -28,7 +28,11 @@ public class Pagamento {
     public void setValor(double valor) {
         this.valor = valor;
     }
-  
-   
-    
+    public void calculaValor(){
+        Ingresso ingresso = new Ingresso();
+        switch(ingresso.getTipoIngresso()){
+            case "Meia":
+        }
+    }    
 }
+
