@@ -5,6 +5,13 @@
  */
 package cinemaadmin;
 
+import cinemalib.Filme;
+import cinemalib.Ingresso;
+import cinemalib.Sessao;
+import cinemalib.Sala;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  *
  * @author amandacarvalho
@@ -15,8 +22,13 @@ public class Cliente extends javax.swing.JFrame {
      * Creates new form Cliente
      */
     public Cliente() {
+        this.filmesAL = new ArrayList();
+        this.sessoesAL = new ArrayList();
         initComponents();
+        closeAllForms2();
     }
+    
+    ArrayList filmesAL, sessoesAL;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,10 +40,62 @@ public class Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Filme4Button = new javax.swing.JButton();
+        Filme1Button = new javax.swing.JButton();
+        Filme2Button = new javax.swing.JButton();
+        Filme3Button = new javax.swing.JButton();
+        IngressoFrame = new javax.swing.JInternalFrame();
+        TipodoIngressoLabel = new javax.swing.JLabel();
+        QuantidadedeIngressosLabel = new javax.swing.JLabel();
+        FileiraPoltronaLabel = new javax.swing.JLabel();
+        NumeroPoltronaLabel = new javax.swing.JLabel();
+        CompraIngressoButton = new javax.swing.JButton();
+        QuantidadedeIngressosField = new javax.swing.JTextField();
+        FileiraPoltronaField = new javax.swing.JTextField();
+        NumeroPoltronaField = new javax.swing.JTextField();
+        TipoIngressoComboBox = new javax.swing.JComboBox<>();
+        CompraFrame = new javax.swing.JInternalFrame();
+        ValorFinalLabel = new javax.swing.JLabel();
+        FormaPagamentoLabel = new javax.swing.JLabel();
+        EfetuarPagamentoButton = new javax.swing.JButton();
+        ValorFinalField = new javax.swing.JTextField();
+        FormaPagamentoComboBox = new javax.swing.JComboBox<>();
+        FilmeFrame = new javax.swing.JInternalFrame();
+        TituloLabel = new javax.swing.JLabel();
+        SinopseLabel = new javax.swing.JLabel();
+        DistribuidoraLabel = new javax.swing.JLabel();
+        DuracaoLabel = new javax.swing.JLabel();
+        ElencoLabel = new javax.swing.JLabel();
+        GeneroLabel = new javax.swing.JLabel();
+        ClassificacaoLabel = new javax.swing.JLabel();
+        DiretorLabel = new javax.swing.JLabel();
+        Sessao1 = new javax.swing.JButton();
+        Sessao2 = new javax.swing.JButton();
+        TituloField = new javax.swing.JTextField();
+        DistribuidoraField = new javax.swing.JTextField();
+        DiretorField = new javax.swing.JTextField();
+        DuracaoField = new javax.swing.JTextField();
+        GeneroField = new javax.swing.JTextField();
+        ClassificacaoField = new javax.swing.JTextField();
+        ElencoField = new javax.swing.JTextField();
+        SinopseField = new javax.swing.JTextField();
+        SessaoFrame = new javax.swing.JInternalFrame();
+        FilmeLabel = new javax.swing.JLabel();
+        HorarioLabel = new javax.swing.JLabel();
+        DiaLabel = new javax.swing.JLabel();
+        TipodaSessaoLabel = new javax.swing.JLabel();
+        IdiomaLabel = new javax.swing.JLabel();
+        SalaLabel = new javax.swing.JLabel();
+        FilmeField = new javax.swing.JTextField();
+        HorarioField = new javax.swing.JTextField();
+        DiaField = new javax.swing.JTextField();
+        TipodaSessaoField = new javax.swing.JTextField();
+        IdiomaField = new javax.swing.JTextField();
+        SalaField = new javax.swing.JTextField();
+        EscolhaOutraSessaoButton = new javax.swing.JButton();
+        EscolherEssaSessaoButton = new javax.swing.JButton();
+        ValorIngressoLabel = new javax.swing.JLabel();
+        ValorIngressoField = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -39,40 +103,460 @@ public class Cliente extends javax.swing.JFrame {
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         desktopPane.setLayout(null);
 
-        jButton1.setText("Filme 4");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Filme4Button.setText("Filme 4");
+        Filme4Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Filme4ButtonActionPerformed(evt);
             }
         });
-        desktopPane.add(jButton1);
-        jButton1.setBounds(570, 110, 120, 200);
+        desktopPane.add(Filme4Button);
+        Filme4Button.setBounds(570, 110, 120, 200);
 
-        jButton2.setText("Filme1");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Filme1Button.setText("Filme1");
+        Filme1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Filme1ButtonActionPerformed(evt);
             }
         });
-        desktopPane.add(jButton2);
-        jButton2.setBounds(50, 110, 120, 200);
+        desktopPane.add(Filme1Button);
+        Filme1Button.setBounds(50, 110, 120, 200);
 
-        jButton3.setText("Filme2");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Filme2Button.setText("Filme2");
+        Filme2Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Filme2ButtonActionPerformed(evt);
             }
         });
-        desktopPane.add(jButton3);
-        jButton3.setBounds(220, 110, 120, 200);
+        desktopPane.add(Filme2Button);
+        Filme2Button.setBounds(220, 110, 120, 200);
 
-        jButton4.setText("Filme3");
-        desktopPane.add(jButton4);
-        jButton4.setBounds(400, 110, 120, 200);
+        Filme3Button.setText("Filme3");
+        Filme3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Filme3ButtonActionPerformed(evt);
+            }
+        });
+        desktopPane.add(Filme3Button);
+        Filme3Button.setBounds(400, 110, 120, 200);
+
+        IngressoFrame.setClosable(true);
+        IngressoFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        IngressoFrame.setVisible(true);
+
+        TipodoIngressoLabel.setText("Tipo do ingresso:");
+
+        QuantidadedeIngressosLabel.setText("Quantidade de ingressos:");
+
+        FileiraPoltronaLabel.setText("Fileira da Poltrona:");
+
+        NumeroPoltronaLabel.setText("Número da Poltrona:");
+
+        CompraIngressoButton.setText("Comprar Ingresso");
+        CompraIngressoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompraIngressoButtonActionPerformed(evt);
+            }
+        });
+
+        TipoIngressoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meia", "Inteira" }));
+
+        javax.swing.GroupLayout IngressoFrameLayout = new javax.swing.GroupLayout(IngressoFrame.getContentPane());
+        IngressoFrame.getContentPane().setLayout(IngressoFrameLayout);
+        IngressoFrameLayout.setHorizontalGroup(
+            IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IngressoFrameLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IngressoFrameLayout.createSequentialGroup()
+                        .addComponent(NumeroPoltronaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NumeroPoltronaField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(IngressoFrameLayout.createSequentialGroup()
+                        .addComponent(FileiraPoltronaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FileiraPoltronaField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(IngressoFrameLayout.createSequentialGroup()
+                        .addComponent(QuantidadedeIngressosLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(QuantidadedeIngressosField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(IngressoFrameLayout.createSequentialGroup()
+                        .addComponent(TipodoIngressoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(TipoIngressoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngressoFrameLayout.createSequentialGroup()
+                .addContainerGap(336, Short.MAX_VALUE)
+                .addComponent(CompraIngressoButton)
+                .addGap(322, 322, 322))
+        );
+        IngressoFrameLayout.setVerticalGroup(
+            IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(IngressoFrameLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TipodoIngressoLabel)
+                    .addComponent(TipoIngressoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(QuantidadedeIngressosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(QuantidadedeIngressosLabel))
+                .addGap(2, 2, 2)
+                .addGroup(IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FileiraPoltronaLabel)
+                    .addComponent(FileiraPoltronaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(IngressoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NumeroPoltronaLabel)
+                    .addComponent(NumeroPoltronaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CompraIngressoButton)
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(IngressoFrame);
+        IngressoFrame.setBounds(200, 400, 838, 479);
+
+        CompraFrame.setClosable(true);
+        CompraFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        CompraFrame.setVisible(true);
+
+        ValorFinalLabel.setText("Valor Final:");
+
+        FormaPagamentoLabel.setText("Forma de Pagamento:");
+
+        EfetuarPagamentoButton.setText("Efetuar Pagamento");
+
+        FormaPagamentoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão" }));
+
+        javax.swing.GroupLayout CompraFrameLayout = new javax.swing.GroupLayout(CompraFrame.getContentPane());
+        CompraFrame.getContentPane().setLayout(CompraFrameLayout);
+        CompraFrameLayout.setHorizontalGroup(
+            CompraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CompraFrameLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(CompraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CompraFrameLayout.createSequentialGroup()
+                        .addComponent(FormaPagamentoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FormaPagamentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CompraFrameLayout.createSequentialGroup()
+                        .addComponent(ValorFinalLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ValorFinalField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CompraFrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(EfetuarPagamentoButton)
+                .addContainerGap())
+        );
+        CompraFrameLayout.setVerticalGroup(
+            CompraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CompraFrameLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(CompraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ValorFinalLabel)
+                    .addComponent(ValorFinalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CompraFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FormaPagamentoLabel)
+                    .addComponent(FormaPagamentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(EfetuarPagamentoButton)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(CompraFrame);
+        CompraFrame.setBounds(0, 0, 436, 206);
+
+        FilmeFrame.setClosable(true);
+        FilmeFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        FilmeFrame.setVisible(true);
+
+        TituloLabel.setText("Título:");
+
+        SinopseLabel.setText("Sinopse:");
+
+        DistribuidoraLabel.setText("Distribuidora:");
+
+        DuracaoLabel.setText("Duração:");
+
+        ElencoLabel.setText("Elenco:");
+
+        GeneroLabel.setText("Gênero:");
+
+        ClassificacaoLabel.setText("Classificação Indicativa:");
+
+        DiretorLabel.setText("Diretor:");
+
+        Sessao1.setText("Sessão 1");
+        Sessao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sessao1ActionPerformed(evt);
+            }
+        });
+
+        Sessao2.setText("Sessão 2");
+        Sessao2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sessao2ActionPerformed(evt);
+            }
+        });
+
+        TituloField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TituloFieldActionPerformed(evt);
+            }
+        });
+
+        DistribuidoraField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DistribuidoraFieldActionPerformed(evt);
+            }
+        });
+
+        DuracaoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DuracaoFieldActionPerformed(evt);
+            }
+        });
+
+        GeneroField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GeneroFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FilmeFrameLayout = new javax.swing.GroupLayout(FilmeFrame.getContentPane());
+        FilmeFrame.getContentPane().setLayout(FilmeFrameLayout);
+        FilmeFrameLayout.setHorizontalGroup(
+            FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FilmeFrameLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                        .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                .addComponent(TituloLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TituloField, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SinopseLabel))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                        .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(SinopseField, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FilmeFrameLayout.createSequentialGroup()
+                                .addComponent(ElencoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ElencoField))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FilmeFrameLayout.createSequentialGroup()
+                                .addComponent(ClassificacaoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ClassificacaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FilmeFrameLayout.createSequentialGroup()
+                                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DuracaoLabel)
+                                    .addComponent(DiretorLabel))
+                                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DuracaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(DiretorField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                        .addComponent(GeneroLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(GeneroField, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                        .addComponent(DistribuidoraLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DistribuidoraField))))
+                            .addGroup(FilmeFrameLayout.createSequentialGroup()
+                                .addComponent(Sessao1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Sessao2)
+                                .addGap(252, 252, 252)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        FilmeFrameLayout.setVerticalGroup(
+            FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FilmeFrameLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TituloLabel)
+                    .addComponent(TituloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DuracaoLabel)
+                    .addComponent(DuracaoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GeneroLabel)
+                    .addComponent(GeneroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DiretorLabel)
+                        .addComponent(DiretorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DistribuidoraLabel)
+                        .addComponent(DistribuidoraField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ClassificacaoLabel)
+                    .addComponent(ClassificacaoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ElencoLabel)
+                    .addComponent(ElencoField, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SinopseLabel)
+                    .addComponent(SinopseField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(FilmeFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Sessao1)
+                    .addComponent(Sessao2))
+                .addGap(46, 46, 46))
+        );
+
+        desktopPane.add(FilmeFrame);
+        FilmeFrame.setBounds(140, 40, 550, 330);
+
+        SessaoFrame.setClosable(true);
+        SessaoFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        SessaoFrame.setVisible(true);
+
+        FilmeLabel.setText("Filme:");
+
+        HorarioLabel.setText("Horário:");
+
+        DiaLabel.setText("Dia:");
+
+        TipodaSessaoLabel.setText("Tipo da Sessão:");
+
+        IdiomaLabel.setText("Idioma:");
+
+        SalaLabel.setText("Sala:");
+
+        FilmeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FilmeFieldActionPerformed(evt);
+            }
+        });
+
+        EscolhaOutraSessaoButton.setText("Escolher outra Sessão");
+        EscolhaOutraSessaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EscolhaOutraSessaoButtonActionPerformed(evt);
+            }
+        });
+
+        EscolherEssaSessaoButton.setText("Escolher essa Sessão");
+        EscolherEssaSessaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EscolherEssaSessaoButtonActionPerformed(evt);
+            }
+        });
+
+        ValorIngressoLabel.setText("Valor Ingresso(Inteira):");
+
+        ValorIngressoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValorIngressoFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SessaoFrameLayout = new javax.swing.GroupLayout(SessaoFrame.getContentPane());
+        SessaoFrame.getContentPane().setLayout(SessaoFrameLayout);
+        SessaoFrameLayout.setHorizontalGroup(
+            SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SessaoFrameLayout.createSequentialGroup()
+                        .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(SalaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SalaField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ValorIngressoLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ValorIngressoField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94)
+                        .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EscolhaOutraSessaoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(EscolherEssaSessaoButton)))
+                    .addGroup(SessaoFrameLayout.createSequentialGroup()
+                        .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(HorarioLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(HorarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(TipodaSessaoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TipodaSessaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(IdiomaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(IdiomaField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(FilmeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FilmeField, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                                .addComponent(DiaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(DiaField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        SessaoFrameLayout.setVerticalGroup(
+            SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SessaoFrameLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FilmeLabel)
+                    .addComponent(FilmeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HorarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HorarioLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DiaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TipodaSessaoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TipodaSessaoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IdiomaLabel)
+                    .addComponent(IdiomaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SessaoFrameLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SalaLabel)
+                            .addComponent(SalaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(SessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ValorIngressoLabel)
+                            .addComponent(ValorIngressoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(SessaoFrameLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(EscolherEssaSessaoButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EscolhaOutraSessaoButton)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(SessaoFrame);
+        SessaoFrame.setBounds(500, 360, 702, 360);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -125,17 +609,189 @@ public class Cliente extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void Filme1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filme1ButtonActionPerformed
+        // TODO add your handling code here
+        closeAllForms2();
+        FilmeFrame.setVisible(true);
+        FilmeFrame.setSize(700, 500);
+        
+        int i = 0;
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        for (Iterator iterator = filmesAL.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            i = i + 1;
+            System.out.println(i);
+            switch(i){
+                case 1:
+                    TituloField.setText(next.getNome());
+                    DuracaoField.setText(next.getDuracao());
+                    GeneroField.setText(next.getGenero());
+                    DiretorField.setText(next.getDiretor());
+                    ClassificacaoField.setText(next.getClassificacao());
+                    ElencoField.setText(next.getElenco());
+                    SinopseField.setText(next.getSinopse());
+                    DistribuidoraField.setText(next.getDistribuidora());
+      
+                    
+            }
+         
+        }
+ 
+    }//GEN-LAST:event_Filme1ButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Filme4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filme4ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        closeAllForms2();
+        FilmeFrame.setVisible(true);
+        FilmeFrame.setSize(700, 500);
+        
+        int i = 0;
+
+        for (Iterator iterator = filmesAL.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            i = i + 1;
+            System.out.println(i);
+            switch(i){
+                case 4:
+                    TituloField.setText(next.getNome());
+                    DuracaoField.setText(next.getDuracao());
+                    GeneroField.setText(next.getGenero());
+                    DiretorField.setText(next.getDiretor());
+                    ClassificacaoField.setText(next.getClassificacao());
+                    ElencoField.setText(next.getElenco());
+                    SinopseField.setText(next.getSinopse());
+                    DistribuidoraField.setText(next.getDistribuidora());
+      
+                    
+            }
+         
+        }
+    }//GEN-LAST:event_Filme4ButtonActionPerformed
+
+    private void Filme2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filme2ButtonActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        FilmeFrame.setVisible(true);
+        FilmeFrame.setSize(700, 500);
+        
+        int i = 0;
+
+        for (Iterator iterator = filmesAL.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            i = i + 1;
+            System.out.println(i);
+            switch(i){
+                case 2:
+                    TituloField.setText(next.getNome());
+                    DuracaoField.setText(next.getDuracao());
+                    GeneroField.setText(next.getGenero());
+                    DiretorField.setText(next.getDiretor());
+                    ClassificacaoField.setText(next.getClassificacao());
+                    ElencoField.setText(next.getElenco());
+                    SinopseField.setText(next.getSinopse());
+                    DistribuidoraField.setText(next.getDistribuidora());
+      
+                    
+            }
+         
+        }
+    }//GEN-LAST:event_Filme2ButtonActionPerformed
+
+    private void Filme3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filme3ButtonActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        FilmeFrame.setVisible(true);
+        FilmeFrame.setSize(700, 500);
+        
+        int i = 0;
+
+        for (Iterator iterator = filmesAL.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            i = i + 1;
+            System.out.println(i);
+            switch(i){
+                case 3:
+                    TituloField.setText(next.getNome());
+                    DuracaoField.setText(next.getDuracao());
+                    GeneroField.setText(next.getGenero());
+                    DiretorField.setText(next.getDiretor());
+                    ClassificacaoField.setText(next.getClassificacao());
+                    ElencoField.setText(next.getElenco());
+                    SinopseField.setText(next.getSinopse());
+                    DistribuidoraField.setText(next.getDistribuidora());
+      
+                    
+            }
+         
+        }
+    }//GEN-LAST:event_Filme3ButtonActionPerformed
+
+    private void Sessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sessao1ActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        SessaoFrame.setVisible(true);
+        SessaoFrame.setSize(700, 500);
+        
+    }//GEN-LAST:event_Sessao1ActionPerformed
+
+    private void TituloFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TituloFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TituloFieldActionPerformed
+
+    private void DistribuidoraFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistribuidoraFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DistribuidoraFieldActionPerformed
+
+    private void DuracaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DuracaoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DuracaoFieldActionPerformed
+
+    private void GeneroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GeneroFieldActionPerformed
+
+    private void EscolhaOutraSessaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EscolhaOutraSessaoButtonActionPerformed
+        // TODO add your handling code here:
+       closeAllForms2();
+        FilmeFrame.setVisible(true);
+        FilmeFrame.setSize(700, 500);
+    }//GEN-LAST:event_EscolhaOutraSessaoButtonActionPerformed
+
+    private void CompraIngressoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompraIngressoButtonActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        CompraFrame.setVisible(true);
+        CompraFrame.setSize(700, 500);
+        Ingresso ticket = new Ingresso();
+        ticket.setTipoIngresso((String) TipoIngressoComboBox.getSelectedItem());
+        ticket.setQuantidade(QuantidadedeIngressosField.getText());
+        ticket.setFileirapoltrona(FileiraPoltronaField.getText());
+        ticket.setNumeropoltrona(NumeroPoltronaField.getText());
+        
+    }//GEN-LAST:event_CompraIngressoButtonActionPerformed
+
+    private void ValorIngressoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorIngressoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ValorIngressoFieldActionPerformed
+
+    private void EscolherEssaSessaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EscolherEssaSessaoButtonActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        IngressoFrame.setVisible(true);
+        IngressoFrame.setSize(700, 500);
+    }//GEN-LAST:event_EscolherEssaSessaoButtonActionPerformed
+
+    private void Sessao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sessao2ActionPerformed
+        // TODO add your handling code here:
+        closeAllForms2();
+        SessaoFrame.setVisible(true);
+        SessaoFrame.setSize(700, 500);
+        
+    }//GEN-LAST:event_Sessao2ActionPerformed
+
+    private void FilmeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilmeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FilmeFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,17 +829,128 @@ public class Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ClassificacaoField;
+    private javax.swing.JLabel ClassificacaoLabel;
+    private javax.swing.JInternalFrame CompraFrame;
+    private javax.swing.JButton CompraIngressoButton;
+    private javax.swing.JTextField DiaField;
+    private javax.swing.JLabel DiaLabel;
+    private javax.swing.JTextField DiretorField;
+    private javax.swing.JLabel DiretorLabel;
+    private javax.swing.JTextField DistribuidoraField;
+    private javax.swing.JLabel DistribuidoraLabel;
+    private javax.swing.JTextField DuracaoField;
+    private javax.swing.JLabel DuracaoLabel;
+    private javax.swing.JButton EfetuarPagamentoButton;
+    private javax.swing.JTextField ElencoField;
+    private javax.swing.JLabel ElencoLabel;
+    private javax.swing.JButton EscolhaOutraSessaoButton;
+    private javax.swing.JButton EscolherEssaSessaoButton;
+    private javax.swing.JTextField FileiraPoltronaField;
+    private javax.swing.JLabel FileiraPoltronaLabel;
+    private javax.swing.JButton Filme1Button;
+    private javax.swing.JButton Filme2Button;
+    private javax.swing.JButton Filme3Button;
+    private javax.swing.JButton Filme4Button;
+    private javax.swing.JTextField FilmeField;
+    private javax.swing.JInternalFrame FilmeFrame;
+    private javax.swing.JLabel FilmeLabel;
+    private javax.swing.JComboBox<String> FormaPagamentoComboBox;
+    private javax.swing.JLabel FormaPagamentoLabel;
+    private javax.swing.JTextField GeneroField;
+    private javax.swing.JLabel GeneroLabel;
+    private javax.swing.JTextField HorarioField;
+    private javax.swing.JLabel HorarioLabel;
+    private javax.swing.JTextField IdiomaField;
+    private javax.swing.JLabel IdiomaLabel;
+    private javax.swing.JInternalFrame IngressoFrame;
+    private javax.swing.JTextField NumeroPoltronaField;
+    private javax.swing.JLabel NumeroPoltronaLabel;
+    private javax.swing.JTextField QuantidadedeIngressosField;
+    private javax.swing.JLabel QuantidadedeIngressosLabel;
+    private javax.swing.JTextField SalaField;
+    private javax.swing.JLabel SalaLabel;
+    private javax.swing.JButton Sessao1;
+    private javax.swing.JButton Sessao2;
+    private javax.swing.JInternalFrame SessaoFrame;
+    private javax.swing.JTextField SinopseField;
+    private javax.swing.JLabel SinopseLabel;
+    private javax.swing.JComboBox<String> TipoIngressoComboBox;
+    private javax.swing.JTextField TipodaSessaoField;
+    private javax.swing.JLabel TipodaSessaoLabel;
+    private javax.swing.JLabel TipodoIngressoLabel;
+    private javax.swing.JTextField TituloField;
+    private javax.swing.JLabel TituloLabel;
+    private javax.swing.JTextField ValorFinalField;
+    private javax.swing.JLabel ValorFinalLabel;
+    private javax.swing.JTextField ValorIngressoField;
+    private javax.swing.JLabel ValorIngressoLabel;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
+    void setFilmes(ArrayList filmes){
+        int i = 0;
+        filmesAL = filmes;
+        for (Iterator iterator = filmes.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            i = i + 1;
+            System.out.println(i);
+            switch(i){
+                case 1:
+                    Filme1Button.setText(next.getNome());
+                case 2:
+                    Filme2Button.setText(next.getNome());
+                case 3:
+                    Filme3Button.setText(next.getNome());
+                case 4:
+                    Filme4Button.setText(next.getNome());
+            }
+            
+        }
+    }
+    void setSessoes(ArrayList sessoes){
+        for (Iterator iterator = sessoes.iterator(); iterator.hasNext();) {
+            Sessao next = (Sessao) iterator.next();
+            HorarioField.setText(next.getHorario());
+            DiaField.setText(next.getDia());
+            TipodaSessaoField.setText(next.getTipoSessao());
+            IdiomaField.setText(next.getIdioma());
+            ValorFinalField.setText(next.getPreco());
+            SalaField.setText(next.getSala());
+        }
+    }
+    void getSessoes(ArrayList sessoes){
+        
+        int i = 0;
+        sessoesAL = sessoes;
+        for (Iterator iterator = sessoes.iterator(); iterator.hasNext();) {
+            Sessao next = (Sessao) iterator.next();
+            if(next.getFilme().equalsIgnoreCase(TituloField.getText())){
+                i = i + 1;
+                switch(i){
+                    case 1:
+                        Sessao1.setText(next.getHorario());
+                    case 2:
+                        Sessao2.setText(next.getHorario());
+                
+                }
+            }
+        
+        }
+    }
+    private void closeAllForms2(){
+    
+    FilmeFrame.setVisible(false);
+    IngressoFrame.setVisible(false);
+    SessaoFrame.setVisible(false);
+    CompraFrame.setVisible(false);
+    }
+    
+    
 }

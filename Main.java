@@ -17,6 +17,10 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
     }
+    
+    Cliente c = new Cliente();
+    Admin a = new Admin();
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,8 +31,8 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        AcessoClienteButton = new javax.swing.JButton();
+        AcessoAdministradorButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -46,17 +50,22 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Acesso Cliente");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        AcessoClienteButton.setText("Acesso Cliente");
+        AcessoClienteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                AcessoClienteButtonMousePressed(evt);
+            }
+        });
+        AcessoClienteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AcessoClienteButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Acesso Administrador");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        AcessoAdministradorButton.setText("Acesso Administrador");
+        AcessoAdministradorButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton2MousePressed(evt);
+                AcessoAdministradorButtonMousePressed(evt);
             }
         });
 
@@ -130,19 +139,19 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(AcessoAdministradorButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton1)))
+                        .addComponent(AcessoClienteButton)))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton1)
+                .addComponent(AcessoClienteButton)
                 .addGap(47, 47, 47)
-                .addComponent(jButton2)
+                .addComponent(AcessoAdministradorButton)
                 .addContainerGap(114, Short.MAX_VALUE))
         );
 
@@ -153,17 +162,25 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void AcessoClienteButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AcessoClienteButtonMousePressed
         // TODO add your handling code here:
-        new Cliente().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1MousePressed
+        
+        c.setVisible(true);
+        c.setFilmes(a.getFilmes());
+        c.setSessoes(a.getSessoes());
+        //this.setVisible(false);
+    }//GEN-LAST:event_AcessoClienteButtonMousePressed
 
-    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+    private void AcessoAdministradorButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AcessoAdministradorButtonMousePressed
         // TODO add your handling code here:
-        new Admin().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2MousePressed
+   
+        a.setVisible(true);
+        //this.setVisible(false);
+    }//GEN-LAST:event_AcessoAdministradorButtonMousePressed
+
+    private void AcessoClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcessoClienteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AcessoClienteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +218,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AcessoAdministradorButton;
+    private javax.swing.JButton AcessoClienteButton;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
@@ -210,8 +229,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;

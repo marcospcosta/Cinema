@@ -10,27 +10,25 @@ package cinemaadmin;
  * @author amandacarvalho
  */
 import cinemalib.*;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+
 
 public class Admin extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    Cartao cartao = new Cartao();
-    Dinheiro dinheiro = new Dinheiro();
-    Filme filme = new Filme();
-    Ingresso ingresso = new Ingresso();
-    Pagamento pagamento = new Pagamento();
-    Sala sala = new Sala();
-    Sessao sessao = new Sessao();
-    
     public Admin() {
         initComponents();
         closeAllForms();
     }
-
+    
+    ArrayList filmes = new ArrayList();
+    ArrayList sessoes = new ArrayList();
+    ArrayList salas = new ArrayList();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,47 +38,49 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cadastroSessaoFrame = new javax.swing.JInternalFrame();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        cadastroSalaFrame = new javax.swing.JInternalFrame();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
         desktopPane = new javax.swing.JDesktopPane();
         cadastroFilmesFrame = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        TituloLabel = new javax.swing.JLabel();
+        TituloField = new javax.swing.JTextField();
+        DuracaoLabel = new javax.swing.JLabel();
+        DuracaoField = new javax.swing.JTextField();
+        GeneroLabel = new javax.swing.JLabel();
+        GeneroField = new javax.swing.JTextField();
+        DiretorLabel = new javax.swing.JLabel();
+        DiretorField = new javax.swing.JTextField();
+        DistribuidoraLabel = new javax.swing.JLabel();
+        DistribuidoraField = new javax.swing.JTextField();
+        ClassificacaoLabel = new javax.swing.JLabel();
+        ClassificacaoField = new javax.swing.JTextField();
+        ElencoLabel = new javax.swing.JLabel();
+        ElencoField = new javax.swing.JTextField();
+        SinopseLabel = new javax.swing.JLabel();
+        SinopseField = new javax.swing.JTextField();
+        CadastroFilmeButton = new javax.swing.JButton();
+        cadastroSalaFrame = new javax.swing.JInternalFrame();
+        CapacidadeSalaLabel = new javax.swing.JLabel();
+        CapacidadeSalaField = new javax.swing.JTextField();
+        NumerodasalaLabel = new javax.swing.JLabel();
+        NumerodaSalaField = new javax.swing.JTextField();
+        TipodaSalaLabel = new javax.swing.JLabel();
+        TipodaSalaComboBox = new javax.swing.JComboBox<>();
+        CadastroSalaButton = new javax.swing.JButton();
+        cadastroSessaoFrame = new javax.swing.JInternalFrame();
+        TipodaSessaoLabel = new javax.swing.JLabel();
+        DiaLabel = new javax.swing.JLabel();
+        HorarioLabel = new javax.swing.JLabel();
+        TipodaSessaoComboBox = new javax.swing.JComboBox<>();
+        DiaComboBox = new javax.swing.JComboBox<>();
+        HorarioComboBox = new javax.swing.JComboBox<>();
+        IdiomaLabel = new javax.swing.JLabel();
+        IdiomaComboBox = new javax.swing.JComboBox<>();
+        PrecoLabel = new javax.swing.JLabel();
+        PrecoField = new javax.swing.JTextField();
+        CadastroSessaoButton = new javax.swing.JButton();
+        FilmeLabel = new javax.swing.JLabel();
+        SalaLabel = new javax.swing.JLabel();
+        FilmeComboBox = new javax.swing.JComboBox<>();
+        SalaComboBox = new javax.swing.JComboBox<>();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -100,207 +100,7 @@ public class Admin extends javax.swing.JFrame {
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        cadastroSessaoFrame.setClosable(true);
-        cadastroSessaoFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        cadastroSessaoFrame.setTitle("Cadastro Sessão");
-        cadastroSessaoFrame.setVisible(true);
-
-        jLabel17.setText("Tipo da Sessão:");
-
-        jLabel18.setText("Dia:");
-
-        jLabel19.setText("Horário:");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Estreia", "Pré-estreia" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matinê", "Noturno" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setText("Idioma:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dublado", "Legendado", " " }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jLabel20.setText("Preço (inteira) :");
-
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Cadastrar Sessão");
-        jButton4.setToolTipText("");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cadastroSessaoFrameLayout = new javax.swing.GroupLayout(cadastroSessaoFrame.getContentPane());
-        cadastroSessaoFrame.getContentPane().setLayout(cadastroSessaoFrameLayout);
-        cadastroSessaoFrameLayout.setHorizontalGroup(
-            cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroSessaoFrameLayout.createSequentialGroup()
-                .addContainerGap(297, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(229, 229, 229))
-            .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        cadastroSessaoFrameLayout.setVerticalGroup(
-            cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(362, 362, 362)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        cadastroSalaFrame.setClosable(true);
-        cadastroSalaFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        cadastroSalaFrame.setTitle("Cadastro de Salas");
-        cadastroSalaFrame.setVisible(true);
-        cadastroSalaFrame.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cadastroSalaFrameMousePressed(evt);
-            }
-        });
-
-        jLabel12.setText("Capacidade da Sala:");
-
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Identificador (número) da Sala:");
-
-        jLabel14.setText("Tipo da sala:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2D", "3D", "XD" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Cadastrar Sala");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cadastroSalaFrameLayout = new javax.swing.GroupLayout(cadastroSalaFrame.getContentPane());
-        cadastroSalaFrame.getContentPane().setLayout(cadastroSalaFrameLayout);
-        cadastroSalaFrameLayout.setHorizontalGroup(
-            cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
-                .addGap(612, 612, 612)
-                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
-                            .addComponent(jLabel14)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroSalaFrameLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
-        cadastroSalaFrameLayout.setVerticalGroup(
-            cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
-                .addGap(904, 904, 904)
-                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        desktopPane.setLayout(null);
 
         cadastroFilmesFrame.setClosable(true);
         cadastroFilmesFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -308,60 +108,62 @@ public class Admin extends javax.swing.JFrame {
         cadastroFilmesFrame.setPreferredSize(new java.awt.Dimension(800, 600));
         cadastroFilmesFrame.setVisible(false);
 
-        jLabel1.setText("Titulo:");
+        TituloLabel.setText("Titulo:");
 
-        jLabel2.setText("Duração:");
+        DuracaoLabel.setText("Duração:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        DuracaoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                DuracaoFieldActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Gênero:");
+        GeneroLabel.setText("Gênero:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        GeneroField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                GeneroFieldActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Diretor:");
+        DiretorLabel.setText("Diretor:");
 
-        jLabel5.setText("Distribuidora:");
+        DistribuidoraLabel.setText("Distribuidora:");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        DistribuidoraField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                DistribuidoraFieldActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Classificação Indicativa:");
+        ClassificacaoLabel.setText("Classificação Indicativa:");
 
-        jLabel7.setText("Elenco:");
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        ClassificacaoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                ClassificacaoFieldActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Sinopse:");
+        ElencoLabel.setText("Elenco:");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        ElencoField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                ElencoFieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cadastrar Filme");
+        SinopseLabel.setText("Sinopse:");
 
-        jLabel10.setText("Capa:");
-
-        jButton2.setText("Escolher arquivo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SinopseField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SinopseFieldActionPerformed(evt);
+            }
+        });
+
+        CadastroFilmeButton.setText("Cadastrar Filme");
+        CadastroFilmeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroFilmeButtonActionPerformed(evt);
             }
         });
 
@@ -373,56 +175,49 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(CadastroFilmeButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadastroFilmesFrameLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(ClassificacaoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ClassificacaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
                                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadastroFilmesFrameLayout.createSequentialGroup()
-                                        .addComponent(jLabel4)
+                                        .addComponent(DiretorLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField4))
+                                        .addComponent(DiretorField))
                                     .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(DuracaoLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(DuracaoField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                        .addComponent(jLabel3)
+                                        .addComponent(GeneroLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField3))
+                                        .addComponent(GeneroField))
                                     .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
+                                        .addComponent(DistribuidoraLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField5))))
+                                        .addComponent(DistribuidoraField))))
                             .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(ElencoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField7))))
+                                .addComponent(ElencoField))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadastroFilmesFrameLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel1)
+                        .addComponent(TituloLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(TituloField))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, cadastroFilmesFrameLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField8)))))
+                        .addComponent(SinopseLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SinopseField)))
                 .addGap(82, 82, 82))
         );
         cadastroFilmesFrameLayout.setVerticalGroup(
@@ -430,43 +225,269 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(cadastroFilmesFrameLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TituloLabel)
+                    .addComponent(TituloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DuracaoLabel)
+                    .addComponent(DuracaoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GeneroLabel)
+                    .addComponent(GeneroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(DiretorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DistribuidoraField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DistribuidoraLabel)
+                    .addComponent(DiretorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ClassificacaoLabel)
+                    .addComponent(ClassificacaoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(ElencoField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ElencoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadastroFilmesFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton2))
-                .addGap(9, 9, 9)
-                .addComponent(jButton1)
+                    .addComponent(SinopseField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SinopseLabel))
+                .addGap(26, 26, 26)
+                .addComponent(CadastroFilmeButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         desktopPane.add(cadastroFilmesFrame);
         cadastroFilmesFrame.setBounds(20, 40, 490, 290);
+
+        cadastroSalaFrame.setClosable(true);
+        cadastroSalaFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        cadastroSalaFrame.setTitle("Cadastro de Salas");
+        cadastroSalaFrame.setVisible(true);
+        cadastroSalaFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cadastroSalaFrameMousePressed(evt);
+            }
+        });
+
+        CapacidadeSalaLabel.setText("Capacidade da Sala:");
+
+        CapacidadeSalaField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CapacidadeSalaFieldActionPerformed(evt);
+            }
+        });
+
+        NumerodasalaLabel.setText("Identificador (número) da Sala:");
+
+        NumerodaSalaField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumerodaSalaFieldActionPerformed(evt);
+            }
+        });
+
+        TipodaSalaLabel.setText("Tipo da sala:");
+
+        TipodaSalaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2D", "3D", "XD" }));
+        TipodaSalaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipodaSalaComboBoxActionPerformed(evt);
+            }
+        });
+
+        CadastroSalaButton.setText("Cadastrar Sala");
+        CadastroSalaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroSalaButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cadastroSalaFrameLayout = new javax.swing.GroupLayout(cadastroSalaFrame.getContentPane());
+        cadastroSalaFrame.getContentPane().setLayout(cadastroSalaFrameLayout);
+        cadastroSalaFrameLayout.setHorizontalGroup(
+            cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
+                        .addComponent(CapacidadeSalaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CapacidadeSalaField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
+                            .addComponent(TipodaSalaLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TipodaSalaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
+                            .addComponent(NumerodasalaLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(NumerodaSalaField, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroSalaFrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CadastroSalaButton)
+                .addContainerGap())
+        );
+        cadastroSalaFrameLayout.setVerticalGroup(
+            cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroSalaFrameLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CapacidadeSalaLabel)
+                    .addComponent(CapacidadeSalaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NumerodasalaLabel)
+                    .addComponent(NumerodaSalaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(cadastroSalaFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TipodaSalaLabel)
+                    .addComponent(TipodaSalaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CadastroSalaButton)
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(cadastroSalaFrame);
+        cadastroSalaFrame.setBounds(140, 20, 660, 430);
+
+        cadastroSessaoFrame.setClosable(true);
+        cadastroSessaoFrame.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        cadastroSessaoFrame.setTitle("Cadastro Sessão");
+        cadastroSessaoFrame.setVisible(true);
+
+        TipodaSessaoLabel.setText("Tipo da Sessão:");
+
+        DiaLabel.setText("Dia:");
+
+        HorarioLabel.setText("Horário:");
+
+        TipodaSessaoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Estreia", "Pré-estreia" }));
+        TipodaSessaoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipodaSessaoComboBoxActionPerformed(evt);
+            }
+        });
+
+        DiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado" }));
+
+        HorarioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matinê", "Noturno" }));
+
+        IdiomaLabel.setText("Idioma:");
+
+        IdiomaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dublado", "Legendado", " " }));
+
+        PrecoLabel.setText("Preço (inteira) :");
+
+        PrecoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrecoFieldActionPerformed(evt);
+            }
+        });
+
+        CadastroSessaoButton.setText("Cadastrar Sessão");
+        CadastroSessaoButton.setToolTipText("");
+        CadastroSessaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroSessaoButtonActionPerformed(evt);
+            }
+        });
+
+        FilmeLabel.setText("Filme:");
+
+        SalaLabel.setText("Sala:");
+
+        FilmeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        FilmeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FilmeComboBoxActionPerformed(evt);
+            }
+        });
+
+        SalaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout cadastroSessaoFrameLayout = new javax.swing.GroupLayout(cadastroSessaoFrame.getContentPane());
+        cadastroSessaoFrame.getContentPane().setLayout(cadastroSessaoFrameLayout);
+        cadastroSessaoFrameLayout.setHorizontalGroup(
+            cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroSessaoFrameLayout.createSequentialGroup()
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(DiaLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(TipodaSessaoLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TipodaSessaoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(SalaLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(SalaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(HorarioLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(HorarioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(IdiomaLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(IdiomaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                        .addComponent(PrecoLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(PrecoField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE))
+                            .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                                .addComponent(FilmeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FilmeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CadastroSessaoButton)))
+                .addGap(227, 227, 227))
+        );
+        cadastroSessaoFrameLayout.setVerticalGroup(
+            cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroSessaoFrameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FilmeLabel)
+                    .addComponent(FilmeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SalaLabel)
+                    .addComponent(SalaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TipodaSessaoLabel)
+                    .addComponent(TipodaSessaoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaLabel)
+                    .addComponent(DiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HorarioLabel)
+                    .addComponent(HorarioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IdiomaLabel)
+                    .addComponent(IdiomaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cadastroSessaoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PrecoLabel)
+                    .addComponent(PrecoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CadastroSessaoButton)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(cadastroSessaoFrame);
+        cadastroSessaoFrame.setBounds(40, 50, 678, 357);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -585,11 +606,11 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
         );
 
         pack();
@@ -611,45 +632,41 @@ public class Admin extends javax.swing.JFrame {
         cadastroFilmesFrame.setSize(700, 500);
     }//GEN-LAST:event_cadastroFilmesMenuMousePressed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void DuracaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DuracaoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_DuracaoFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void GeneroFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_GeneroFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void ElencoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElencoFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_ElencoFieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void SinopseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SinopseFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_SinopseFieldActionPerformed
 
     private void cadastroFilmesMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroFilmesMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroFilmesMenuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void DistribuidoraFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistribuidoraFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_DistribuidoraFieldActionPerformed
 
     private void cadastroSalaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroSalaMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroSalaMenuActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void CapacidadeSalaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapacidadeSalaFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_CapacidadeSalaFieldActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void TipodaSalaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipodaSalaComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TipodaSalaComboBoxActionPerformed
    
     private void cadastroSalaFrameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastroSalaFrameMousePressed
         // TODO add your handling code here:
@@ -680,50 +697,68 @@ public class Admin extends javax.swing.JFrame {
         cadastroSessaoFrame.setSize(700, 500);
     }//GEN-LAST:event_cadastroSessãoMenuMousePressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void CadastroSalaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroSalaButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        Sala s1 = new Sala();
+        s1.setCapacidade(CapacidadeSalaField.getText());
+        s1.setTipoSala((String) TipodaSalaComboBox.getSelectedItem());
+        s1.setNumero(NumerodaSalaField.getText());
+        salas.add(s1);
+        this.limpaCamposSalas();
+        JOptionPane.showMessageDialog(null,"Sala cadastrada com sucesso!");
+    }//GEN-LAST:event_CadastroSalaButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void CadastroSessaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroSessaoButtonActionPerformed
         // TODO add your handling code here:
-        JComboBox combo = new JComboBox();
-        sessao.cadastroSessao(sessao.getTipo(), sessao.getDia(), sessao.getHorario(), sessao.getIdioma(), sessao.getPreco());
-        
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+        Sessao se1 = new Sessao();
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        se1.setSala((String) SalaComboBox.getSelectedItem());
+        se1.setFilme((String) FilmeComboBox.getSelectedItem());
+        se1.setTipoSessao((String) TipodaSessaoComboBox.getSelectedItem());
+        se1.setDia((String) DiaComboBox.getSelectedItem());
+        se1.setHorario((String) HorarioComboBox.getSelectedItem());
+        se1.setIdioma((String) IdiomaComboBox.getSelectedItem());
+        se1.setPreco(PrecoField.getText());
+        sessoes.add(se1);
+        this.limpaCamposFilmes();
+        JOptionPane.showMessageDialog(null,"Sessão cadastrada com sucesso!");
+    }//GEN-LAST:event_CadastroSessaoButtonActionPerformed
+
+    private void PrecoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecoFieldActionPerformed
         // TODO add your handling code here:
-        JTextField text = new JTextField();
-        sessao.setPreco(text.getSelectedText());
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_PrecoFieldActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void TipodaSessaoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipodaSessaoComboBoxActionPerformed
         // TODO add your handling code here:
-        JComboBox combo = new JComboBox();
-        sessao.setTipo(combo.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_TipodaSessaoComboBoxActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void CadastroFilmeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroFilmeButtonActionPerformed
         // TODO add your handling code here:
-        JComboBox combo = new JComboBox();
-        sessao.setDia(combo.getSelectedItem().toString());
+        Filme f1 = new Filme();
+        f1.setNome(TituloField.getText());
+        f1.setDuracao(DuracaoField.getText());
+        f1.setGenero(GeneroField.getText());
+        f1.setDiretor(DiretorField.getText());
+        f1.setDistribuidora(DistribuidoraField.getText());
+        f1.setClassificacao(ClassificacaoField.getText());
+        f1.setElenco(ElencoField.getText());
+        f1.setSinopse(SinopseField.getText());
+        filmes.add(f1);
+        this.limpaCamposFilmes();
+        JOptionPane.showMessageDialog(null,"Filme cadastrado com sucesso!");
+    }//GEN-LAST:event_CadastroFilmeButtonActionPerformed
 
-    }//GEN-LAST:event_jComboBox4ActionPerformed
-
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+    private void ClassificacaoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClassificacaoFieldActionPerformed
         // TODO add your handling code here:
-        JComboBox combo = new JComboBox();
-        sessao.setHorario(combo.getSelectedItem().toString());
-  
-    }//GEN-LAST:event_jComboBox6ActionPerformed
+    }//GEN-LAST:event_ClassificacaoFieldActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void NumerodaSalaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumerodaSalaFieldActionPerformed
         // TODO add your handling code here:
-        JComboBox combo = new JComboBox();
-        sessao.setIdioma(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_NumerodaSalaFieldActionPerformed
 
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    private void FilmeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilmeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FilmeComboBoxActionPerformed
         
     /**
      * @param args the command line arguments
@@ -764,6 +799,45 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CadastroFilmeButton;
+    private javax.swing.JButton CadastroSalaButton;
+    private javax.swing.JButton CadastroSessaoButton;
+    private javax.swing.JTextField CapacidadeSalaField;
+    private javax.swing.JLabel CapacidadeSalaLabel;
+    private javax.swing.JTextField ClassificacaoField;
+    private javax.swing.JLabel ClassificacaoLabel;
+    private javax.swing.JComboBox<String> DiaComboBox;
+    private javax.swing.JLabel DiaLabel;
+    private javax.swing.JTextField DiretorField;
+    private javax.swing.JLabel DiretorLabel;
+    private javax.swing.JTextField DistribuidoraField;
+    private javax.swing.JLabel DistribuidoraLabel;
+    private javax.swing.JTextField DuracaoField;
+    private javax.swing.JLabel DuracaoLabel;
+    private javax.swing.JTextField ElencoField;
+    private javax.swing.JLabel ElencoLabel;
+    private javax.swing.JComboBox<String> FilmeComboBox;
+    private javax.swing.JLabel FilmeLabel;
+    private javax.swing.JTextField GeneroField;
+    private javax.swing.JLabel GeneroLabel;
+    private javax.swing.JComboBox<String> HorarioComboBox;
+    private javax.swing.JLabel HorarioLabel;
+    private javax.swing.JComboBox<String> IdiomaComboBox;
+    private javax.swing.JLabel IdiomaLabel;
+    private javax.swing.JTextField NumerodaSalaField;
+    private javax.swing.JLabel NumerodasalaLabel;
+    private javax.swing.JTextField PrecoField;
+    private javax.swing.JLabel PrecoLabel;
+    private javax.swing.JComboBox<String> SalaComboBox;
+    private javax.swing.JLabel SalaLabel;
+    private javax.swing.JTextField SinopseField;
+    private javax.swing.JLabel SinopseLabel;
+    private javax.swing.JComboBox<String> TipodaSalaComboBox;
+    private javax.swing.JLabel TipodaSalaLabel;
+    private javax.swing.JComboBox<String> TipodaSessaoComboBox;
+    private javax.swing.JLabel TipodaSessaoLabel;
+    private javax.swing.JTextField TituloField;
+    private javax.swing.JLabel TituloLabel;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JInternalFrame cadastroFilmesFrame;
     private javax.swing.JMenuItem cadastroFilmesMenu;
@@ -781,43 +855,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
@@ -829,6 +866,59 @@ public class Admin extends javax.swing.JFrame {
     cadastroFilmesFrame.setVisible(false);
     cadastroSalaFrame.setVisible(false);
     cadastroSessaoFrame.setVisible(false);
+    }
+    
+    ArrayList getFilmes(){
+        return filmes;
+    }
+    ArrayList getSessoes(){
+        return sessoes;
+    }
+    ArrayList getSalas(){
+        return salas;
+    }
+    
+    void limpaCamposFilmes(){
+        
+        TituloField.setText("");
+        DuracaoField.setText("");
+        GeneroField.setText("");
+        DiretorField.setText("");
+        TituloField.setText("");
+        ClassificacaoField.setText("");
+        ElencoField.setText("");
+        SinopseField.setText("");
+        DistribuidoraField.setText("");
+        TituloField.requestFocus();
+        
+    }
+    
+    void limpaCamposSessoes(){
+        
+        PrecoField.setText("");
+        PrecoField.requestFocus();
+    
+    }
+    
+    void limpaCamposSalas(){
+        
+        CapacidadeSalaField.setText("");
+        NumerodaSalaField.requestFocus();
+        CapacidadeSalaField.requestFocus();
+        
+    }
+    
+    void setFilmeComboBox(){
+        for (Iterator iterator = filmes.iterator(); iterator.hasNext();) {
+            Filme next = (Filme) iterator.next();
+            FilmeComboBox.addItem(next.getNome());
+        }
+    }
+    void setSalaComboBox(){
+        for (Iterator iterator = salas.iterator(); iterator.hasNext();) {
+            Sala next = (Sala) iterator.next();
+            SalaComboBox.addItem(next.getNumero());
+        }
     }
     
 }

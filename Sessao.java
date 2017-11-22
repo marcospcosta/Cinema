@@ -11,24 +11,53 @@ package cinemalib;
  * @author amandacarvalho
  */
 public class Sessao {
+
+ 
     
-    Sala room;
-    Filme movie;
+    private String tiposessao, dia, idioma, horario, preco, sala, filme;
     
-    private String tipo, dia, idioma, horario, preco;
-   
-    /**
-     * @return the tipo
+       /**
+     * @return the filme
      */
-    public String getTipo() {
-        return tipo;
+    public String getFilme() {
+        return filme;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param filme the filme to set
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setFilme(String filme) {
+        this.filme = filme;
+    }
+       /**
+     * @return the sala
+     */
+    public String getSala() {
+        return sala;
+    }
+
+    /**
+     * @param sala the sala to set
+     */
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
+    
+    Sala room;
+    Filme movie;
+   
+    /**
+     * @return the tipoessao
+     */
+    public String getTipoSessao() {
+        return tiposessao;
+    }
+
+    /**
+     * @param tiposessao the tiposessao to set
+     */
+    public void setTipoSessao(String tiposessao) {
+        this.tiposessao = tiposessao;
     }
 
     /**
@@ -95,12 +124,13 @@ public class Sessao {
      * @param idioma
      * @param preco
      */
-    public void cadastroSessao(String tipo, String dia, String horario,String idioma, String preco) {
+    public void cadastroSessao(String tipo, String dia, String horario,String idioma, String preco, String sala, String filme) {
         Sessao sessao = new Sessao();
-        sessao.setTipo(tipo);
+        sessao.setTipoSessao(tipo);
         sessao.setDia(dia);
         sessao.setHorario(horario);
         sessao.setIdioma(idioma);
         sessao.setPreco(preco);
+        sessao.setSala(sala);
     }
 }

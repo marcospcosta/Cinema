@@ -14,34 +14,33 @@ public class Ingresso {
     
     Sessao session;
     
-    private int quantidade, numeropoltrona;
-    private String tipoingresso, fileirapoltrona;
+    private String tipoingresso, fileirapoltrona, quantidade, numeropoltrona;
 
     /**
      * @return the quantidade
      */
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
     /**
      * @param quantidade the quantidade to set
      */
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
     /**
      * @return the numeropoltrona
      */
-    public int getNumeropoltrona() {
+    public String getNumeropoltrona() {
         return numeropoltrona;
     }
 
     /**
      * @param numeropoltrona the numeropoltrona to set
      */
-    public void setNumeropoltrona(int numeropoltrona) {
+    public void setNumeropoltrona(String numeropoltrona) {
         this.numeropoltrona = numeropoltrona;
     }
 

@@ -11,35 +11,34 @@ package cinemalib;
  */
 public class Sala {
     
-    private double capacidade;
-    private String tipo, numero;
+    private String tiposala, numero, capacidade;
 
     /**
      * @return the capacidade
      */
-    public double getCapacidade() {
+    public String getCapacidade() {
         return capacidade;
     }
 
     /**
      * @param capacidade the capacidade to set
      */
-    public void setCapacidade(double capacidade) {
+    public void setCapacidade(String capacidade) {
         this.capacidade = capacidade;
     }
 
     /**
-     * @return the tipo
+     * @return the tiposala
      */
-    public String getTipo() {
-        return tipo;
+    public String getTipoSala() {
+        return tiposala;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoSala(String tiposala) {
+        this.tiposala = tiposala;
     }
 
     /**
